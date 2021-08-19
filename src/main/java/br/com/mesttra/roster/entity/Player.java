@@ -1,7 +1,7 @@
 package br.com.mesttra.roster.entity;
 
 import br.com.mesttra.roster.enums.Position;
-import lombok.Data;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,6 +18,11 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @ApiModelProperty(
+            value = "Player name",
+            name = "name",
+            dataType = "String",
+            example = "João Almeida")
     private String name;
 
     @Enumerated(EnumType.STRING)
