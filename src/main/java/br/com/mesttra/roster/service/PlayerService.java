@@ -2,6 +2,7 @@ package br.com.mesttra.roster.service;
 
 import br.com.mesttra.roster.entity.Player;
 import br.com.mesttra.roster.repository.PlayerRepository;
+import br.com.mesttra.roster.rest.FinancialClient;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +15,13 @@ import java.util.Optional;
 public class PlayerService {
 
     PlayerRepository playerRepository;
+    FinancialClient financialClient;
 
     public Player addPlayer(Player player) {
-        return playerRepository.save(player);
+        player = playerRepository.save(player);
+        financialClient.hirePlayer(player);
+
+        return player;
     }
 
     public List<Player> listPlayers() {
